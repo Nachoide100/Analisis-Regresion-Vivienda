@@ -12,13 +12,13 @@ Este proyecto analiza el dataset "Ames Housing" para identificar los factores cl
 
 Puse los hallazgos principales al inicio para un resumen rápido.
 
-* [cite_start]**Precisión del Modelo (RMSE):** El modelo final puede predecir el precio de una vivienda con un **error promedio de $21,579**[cite: 678].
-* [cite_start]**Explicabilidad (Adj. R-squared):** El modelo explica el **89.5% de la varianza** en los precios de las viviendas[cite: 644].
+* **Precisión del Modelo (RMSE):** El modelo final puede predecir el precio de una vivienda con un **error promedio de $21,579**.
+* **Explicabilidad (Adj. R-squared):** El modelo explica el **89.5% de la varianza** en los precios de las viviendas.
 * **Principales Drivers de Precio (p < 0.05):**
-    * **`OverallQual` (Calidad General):** El factor más significativo. [cite_start]Por cada punto de aumento en la calidad, el precio de la vivienda aumenta aproximadamente un **5.5%** [cite: 650-651].
-    * [cite_start]**`GrLivArea` (Metros Cuadrados):** Un factor clave de predicción[cite: 256].
-    * [cite_start]**`Neighborhood` (Barrio):** La ubicación tiene un impacto estadísticamente significativo en el precio (demostrado por prueba ANOVA) [cite: 61-65, 534, 535].
-    * [cite_start]**`CentralAir` (Aire Acondicionado):** Tener aire acondicionado central supone un aumento de precio cercano al **30%**[cite: 649].
+    * **`OverallQual` (Calidad General):** El factor más significativo. Por cada punto de aumento en la calidad, el precio de la vivienda aumenta aproximadamente un **5.5%** .
+    * [cite_start]**`GrLivArea` (Metros Cuadrados):** Un factor clave de predicción.
+    * [cite_start]**`Neighborhood` (Barrio):** La ubicación tiene un impacto estadísticamente significativo en el precio (demostrado por prueba ANOVA) .
+    * [cite_start]**`CentralAir` (Aire Acondicionado):** Tener aire acondicionado central supone un aumento de precio cercano al **30%**.
 
 ---
 
@@ -32,25 +32,25 @@ Se analizaron las variables para entender sus relaciones. La variable objetivo, 
 ![Histograma de SalePrice mostrando asimetría positiva](visualization/saleprice_distribution.png)
 
 ### Fase 2: Transformación de Datos y Normalidad
-[cite_start]Para corregir la asimetría, se aplicó una **transformación logarítmica** (`np.log`) a `SalePrice` [cite: 425-427]. [cite_start]Los gráficos QQ-Plot confirmaron que la variable transformada se ajusta mucho mejor a una distribución normal, un paso crítico para un modelo robusto .
+Para corregir la asimetría, se aplicó una **transformación logarítmica** (`np.log`) a `SalePrice`. Los gráficos QQ-Plot confirmaron que la variable transformada se ajusta mucho mejor a una distribución normal, un paso crítico para un modelo robusto .
 
 ![QQ-Plot de SalePrice Log-Transformado](visualization/LogSalePrice_QQplot.png)
 
 ### Fase 3: Pruebas de Hipótesis y Selección de Features
 Se usaron pruebas estadísticas formales para validar la inclusión de predictores:
-* [cite_start]**T-Test:** Confirmó que tener `CentralAir` tiene un impacto estadísticamente significativo en el precio (p < 0.05) [cite: 57-60, 523].
-* [cite_start]**ANOVA:** Confirmó que `Neighborhood` es un predictor significativo [cite: 61-65, 534, 535].
-* [cite_start]**Matriz de Correlación:** Identificó las variables numéricas más fuertes, como `OverallQual` y `GrLivArea` [cite: 255-261].
+* **T-Test:** Confirmó que tener `CentralAir` tiene un impacto estadísticamente significativo en el precio (p < 0.05).
+* **ANOVA:** Confirmó que `Neighborhood` es un predictor significativo.
+* **Matriz de Correlación:** Identificó las variables numéricas más fuertes, como `OverallQual` y `GrLivArea`..
 
 ![Matriz de Correlación de variables numéricas](visualization/correlation_matrix.png)
 
 ### Fase 4: Construcción del Modelo de Regresión (MLR)
-[cite_start]Se construyó un modelo de Regresión Lineal Múltiple (`statsmodels.api.OLS`) usando los predictores validados [cite: 87-88]. [cite_start]Las variables categóricas (como `Neighborhood`) se transformaron usando `pd.get_dummies` [cite: 77-80].
+Se construyó un modelo de Regresión Lineal Múltiple (`statsmodels.api.OLS`) usando los predictores validados. Las variables categóricas (como `Neighborhood`) se transformaron usando `pd.get_dummies`.
 
 ### Fase 5: Diagnóstico y Validación del Modelo
 El modelo fue validado comprobando los supuestos de la regresión.
-* [cite_start]El **análisis de residuos** mostró una nube de puntos aleatoria (homoscedasticidad), lo que confirma que el modelo es fiable [cite: 107, 108, 681-682].
-* [cite_start]El **QQ-Plot de los residuos** confirmó que los errores del modelo se distribuyen normalmente [cite: 109, 647, 705-710].
+* El **análisis de residuos** mostró una nube de puntos aleatoria (homoscedasticidad), lo que confirma que el modelo es fiable.
+* El **QQ-Plot de los residuos** confirmó que los errores del modelo se distribuyen normalmente.
 
 ![Gráfico de Residuos vs. Valores Ajustados](visualization/residuals_fitted_values.png)
 
@@ -58,11 +58,11 @@ El modelo fue validado comprobando los supuestos de la regresión.
 
 ## 🚀 Próximos Pasos (Futuras Mejoras)
 
-Aunque el modelo MLR es robusto, asume relaciones lineales. [cite_start]El siguiente paso es explorar modelos más complejos para capturar la "disminución de rendimientos" (ej. el valor de un m² extra es menor en una mansión que en una casa pequeña [cite: 124-125]).
+Aunque el modelo MLR es robusto, asume relaciones lineales. El siguiente paso es explorar modelos más complejos para capturar la "disminución de rendimientos" (ej. el valor de un m² extra es menor en una mansión que en una casa pequeña.
 
-* [cite_start]**Regresión Polinómica:** Añadir términos cuadráticos (ej. `GrLivArea^2`)[cite: 147].
-* [cite_start]**Regresión con Splines:** Usar `bs(GrLivArea, df=6)` para un ajuste más flexible [cite: 158-165].
-* [cite_start]**Modelos Aditivos Generalizados (GAM):** Usar `pygam` para encontrar automáticamente las mejores curvas no lineales para `GrLivArea` y `YearBuilt` [cite: 177-179].
+* **Regresión Polinómica:** Añadir términos cuadráticos (ej. `GrLivArea^2`).
+* **Regresión con Splines:** Usar `bs(GrLivArea, df=6)` para un ajuste más flexible.
+* **Modelos Aditivos Generalizados (GAM):** Usar `pygam` para encontrar automáticamente las mejores curvas no lineales para `GrLivArea` y `YearBuilt`.
 
 ---
 
