@@ -29,12 +29,12 @@ El proyecto siguió un flujo de trabajo estadístico riguroso dividido en 5 fase
 ### Fase 1: Análisis Exploratorio de Datos (EDA)
 Se analizaron las variables para entender sus relaciones. La variable objetivo, `SalePrice`, presentaba una fuerte asimetría (skewness), lo cual viola los supuestos de la regresión lineal.
 
-![Histograma de SalePrice mostrando asimetría positiva](visualizations/saleprice_distribution.png)
+![Histograma de SalePrice mostrando asimetría positiva](visualization/saleprice_distribution.png)
 
 ### Fase 2: Transformación de Datos y Normalidad
 [cite_start]Para corregir la asimetría, se aplicó una **transformación logarítmica** (`np.log`) a `SalePrice` [cite: 425-427]. [cite_start]Los gráficos QQ-Plot confirmaron que la variable transformada se ajusta mucho mejor a una distribución normal, un paso crítico para un modelo robusto .
 
-![QQ-Plot de SalePrice Log-Transformado](visualizations/log_saleprice_qqplot.png)
+![QQ-Plot de SalePrice Log-Transformado](visualization/LogSalePrice_QQplot.png)
 
 ### Fase 3: Pruebas de Hipótesis y Selección de Features
 Se usaron pruebas estadísticas formales para validar la inclusión de predictores:
@@ -42,7 +42,7 @@ Se usaron pruebas estadísticas formales para validar la inclusión de predictor
 * [cite_start]**ANOVA:** Confirmó que `Neighborhood` es un predictor significativo [cite: 61-65, 534, 535].
 * [cite_start]**Matriz de Correlación:** Identificó las variables numéricas más fuertes, como `OverallQual` y `GrLivArea` [cite: 255-261].
 
-![Matriz de Correlación de variables numéricas](visualizations/corr_matrix.png)
+![Matriz de Correlación de variables numéricas](visualization/correlation_matrix.png)
 
 ### Fase 4: Construcción del Modelo de Regresión (MLR)
 [cite_start]Se construyó un modelo de Regresión Lineal Múltiple (`statsmodels.api.OLS`) usando los predictores validados [cite: 87-88]. [cite_start]Las variables categóricas (como `Neighborhood`) se transformaron usando `pd.get_dummies` [cite: 77-80].
@@ -52,7 +52,7 @@ El modelo fue validado comprobando los supuestos de la regresión.
 * [cite_start]El **análisis de residuos** mostró una nube de puntos aleatoria (homoscedasticidad), lo que confirma que el modelo es fiable [cite: 107, 108, 681-682].
 * [cite_start]El **QQ-Plot de los residuos** confirmó que los errores del modelo se distribuyen normalmente [cite: 109, 647, 705-710].
 
-![Gráfico de Residuos vs. Valores Ajustados](visualizations/residuals_plot.png)
+![Gráfico de Residuos vs. Valores Ajustados](visualization/residuals_fitted_values.png)
 
 ---
 
