@@ -16,9 +16,9 @@ Puse los hallazgos principales al inicio para un resumen rápido.
 * **Explicabilidad (Adj. R-squared):** El modelo explica el **89.5% de la varianza** en los precios de las viviendas.
 * **Principales Drivers de Precio (p < 0.05):**
     * **`OverallQual` (Calidad General):** El factor más significativo. Por cada punto de aumento en la calidad, el precio de la vivienda aumenta aproximadamente un **5.5%** .
-    * [cite_start]**`GrLivArea` (Metros Cuadrados):** Un factor clave de predicción.
-    * [cite_start]**`Neighborhood` (Barrio):** La ubicación tiene un impacto estadísticamente significativo en el precio (demostrado por prueba ANOVA) .
-    * [cite_start]**`CentralAir` (Aire Acondicionado):** Tener aire acondicionado central supone un aumento de precio cercano al **30%**.
+    * **`GrLivArea` (Metros Cuadrados):** Un factor clave de predicción.
+    * **`Neighborhood` (Barrio):** La ubicación tiene un impacto estadísticamente significativo en el precio (demostrado por prueba ANOVA) .
+    * **`CentralAir` (Aire Acondicionado):** Tener aire acondicionado central supone un aumento de precio cercano al **30%**.
 
 ---
 
