@@ -31,9 +31,21 @@ Se analizaron las variables para entender sus relaciones. La variable objetivo, 
 
 ![Histograma de SalePrice mostrando asimetría positiva](visualization/saleprice_distribution.png)
 
+A su vez, la diferencia entre media (185261.4) y mediana (170000.0) nos indica la posible presencia de outliers (valores extremos en la muestra que alteran la distribución).
+
+Por otro lado, se diseñó una tabla de correlación para determinar que variables estaban más relacionadas con la variable target: 
+![Matriz de Correlación de variables numéricas](visualization/correlation_matrix.png)
+
+Una vez determinadas, se representó su relación con el SalePrice, a través de un scatter plot si la variable era numérica o un box plot si la variable era categórica: 
+
+![Scatter Plot GrLivArea vs SalePrice](visualization/GrLivArea_scatterplot.png)
+![Box Plot OverallQueal vs SalePrice](visualization/OveralQual_boxplot.png)
+
+
 ### Fase 2: Transformación de Datos y Normalidad
 Para corregir la asimetría, se aplicó una **transformación logarítmica** (`np.log`) a `SalePrice`. Los gráficos QQ-Plot confirmaron que la variable transformada se ajusta mucho mejor a una distribución normal, un paso crítico para un modelo robusto .
 
+![QQ-Plot de SalePrice](visualization/SalePrice_qqplot.png)
 ![QQ-Plot de SalePrice Log-Transformado](visualization/LogSalePrice_QQplot.png)
 
 ### Fase 3: Pruebas de Hipótesis y Selección de Features
@@ -42,7 +54,6 @@ Se usaron pruebas estadísticas formales para validar la inclusión de predictor
 * **ANOVA:** Confirmó que `Neighborhood` es un predictor significativo.
 * **Matriz de Correlación:** Identificó las variables numéricas más fuertes, como `OverallQual` y `GrLivArea`..
 
-![Matriz de Correlación de variables numéricas](visualization/correlation_matrix.png)
 
 ### Fase 4: Construcción del Modelo de Regresión (MLR)
 Se construyó un modelo de Regresión Lineal Múltiple (`statsmodels.api.OLS`) usando los predictores validados. Las variables categóricas (como `Neighborhood`) se transformaron usando `pd.get_dummies`.
