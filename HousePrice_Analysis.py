@@ -46,6 +46,8 @@ plt.show()
 #Find key predictors
 #Calculate the correlation matrix
 # 1. Create a list of all your numeric predictor columns + the target
+# Convert categorical varible
+df["CentralAir_n"] = np.where(df["CentralAir"] == "Y", 1, 0)
 numeric_columns = [
     'OverallQual',
     'YearBuilt',
@@ -53,7 +55,9 @@ numeric_columns = [
     'FullBath',
     'BedroomAbvGr',
     'GarageCars',
-    'SalePrice'  # Include your target variable
+    "CentralAir_n",
+    'SalePrice'
+    # Include your target variable
 ]
 
 # 2. Create a new DataFrame containing ONLY these numeric columns
@@ -90,6 +94,7 @@ plt.show()
 ax = df.plot.scatter(x="GrLivArea", y="SalePrice")
 ax.set_xlabel("Garden Area")
 ax.set_ylabel("SalePrice")
+plt.savefig("visualization/GrLivArea_scatterplot.png")
 plt.show()
 #YearBuilt
 ax = df.plot.scatter(x="YearBuilt", y="SalePrice")
@@ -102,6 +107,7 @@ plt.show()
 ax = df.boxplot(by="OverallQual", column="SalePrice")
 ax.set_xlabel("Overall Qualification")
 ax.set_ylabel("SalePrice")
+plt.savefig("visualization/OverallQual_boxplot.png")
 plt.show()
 
 #Central Air
@@ -126,6 +132,7 @@ plt.show()
 #QQ Plot
 #QQPlot
 stats.probplot(df["SalePrice"], dist="norm", plot=plt)
+plt.savefig("visualization/SalePrice_qqplot.png")
 plt.show()
 
 #Convert SalePrice to normal distribution
