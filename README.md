@@ -39,7 +39,7 @@ Por otro lado, se diseñó una tabla de correlación para determinar que variabl
 Una vez determinadas, se representó su relación con el SalePrice, a través de un scatter plot si la variable era numérica o un box plot si la variable era categórica: 
 
 ![Scatter Plot GrLivArea vs SalePrice](visualization/GrLivArea_scatterplot.png)
-![Box Plot OverallQueal vs SalePrice](visualization/OveralQual_boxplot.png)
+![Box Plot OverallQueal vs SalePrice](visualization/OverallQual_boxplot.png)
 
 
 ### Fase 2: Transformación de Datos y Normalidad
