@@ -65,6 +65,20 @@ El modelo fue validado comprobando los supuestos de la regresión.
 
 ![Gráfico de Residuos vs. Valores Ajustados](visualization/residuals_fitted_values.png)
 
+###Fase 6: Plan de acción
+El modelo no solo predice precios con una alta precisión (explica el 89.5% de la varianza), sino que también genera valor de negocio directo. Basado en los resultados, las acciones recomendadas son:
+
+* **Insights Estadísticos para Marketing y Ventas:**
+
+Enfocar la Venta en la Calidad: El modelo prueba que OverallQual (Calidad General) es el factor con mayor impacto. Los agentes deben usar esto para justificar precios y aconsejar a los clientes sobre renovaciones rentables.
+
+Cuantificar el Valor de las Comodidades: Podemos afirmar con datos que CentralAir añade un valor significativo (cercano al 30%). Esto justifica su instalación como una inversión clave antes de vender.
+
+* **Acción Recomendada (Despliegue):**
+
+Crear una Herramienta de Tasación Interna: El siguiente paso lógico es convertir este script en una aplicación web simple (usando Streamlit o Flask).
+
+Resultado: Los agentes podrían introducir las características de una propiedad y recibir una tasación instantánea (ej. "$195,000 ± $21,579"), estandarizando las tasaciones y dándoles una ventaja competitiva basada en datos.
 ---
 
 ## 🚀 Próximos Pasos (Futuras Mejoras)
