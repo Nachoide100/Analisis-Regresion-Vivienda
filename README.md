@@ -65,7 +65,7 @@ El modelo fue validado comprobando los supuestos de la regresión.
 
 ![Gráfico de Residuos vs. Valores Ajustados](visualization/residuals_fitted_values.png)
 
-###Fase 6: Plan de acción
+### Fase 6: Plan de acción
 El modelo no solo predice precios con una alta precisión (explica el 89.5% de la varianza), sino que también genera valor de negocio directo. Basado en los resultados, las acciones recomendadas son:
 
 * **Insights Estadísticos para Marketing y Ventas:**
@@ -78,7 +78,8 @@ Cuantificar el Valor de las Comodidades: Podemos afirmar con datos que CentralAi
 
 Crear una Herramienta de Tasación Interna: El siguiente paso lógico es convertir este script en una aplicación web simple (usando Streamlit o Flask).
 
-Resultado: Los agentes podrían introducir las características de una propiedad y recibir una tasación instantánea (ej. "$195,000 ± $21,579"), estandarizando las tasaciones y dándoles una ventaja competitiva basada en datos.
+Resultado: Los agentes podrían introducir las características de una propiedas y recibir una tasación instantánea (ej. ""$195,000 +- $21,759"), estandarizando las tasaciones y dándoles una ventaja competitiva basada en datos. 
+
 ---
 
 ## 🚀 Próximos Pasos (Futuras Mejoras)
